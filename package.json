@@ -6,6 +6,13 @@
     "scripts": {
         "start": "",
         "start:prod": "cd server && npm start",
+        "start:dev":"",
+        "seed":""
+
+    },
+    "author": "Janea Smith",
+    "license": "ISC",
+    "dependencies": {
         
     }
 }
