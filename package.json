@@ -1,0 +1,11 @@
+{
+    "name": "Redux-Store",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server/server.js",
+    "scripts": {
+        "start": "",
+        "start:prod": "cd server && npm start",
+        
+    }
+}
