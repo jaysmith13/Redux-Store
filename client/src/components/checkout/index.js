@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import CartItem from '../CartItem';
+import CheckoutItem from '../checkoutItem';
 import Auth from '../../utils/auth';
 import './style.css';
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
@@ -9,7 +9,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { useLazyQuery } from '@apollo/react-hooks';
 import { useSelector, useDispatch } from 'react-redux';
 
-const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+const stripePromise = loadStripe('pk_test_51LXFykLV2oOJPgrv1Gzdsp4JUD7d54Q16U4Ba2whg8vIvBcC6apN8sQaU0udrKOi0ZGSXD4ybcaMzSFNbA82RXQA00BiUxeTev');
 
 const Cart = () => {
   const state = useSelector(state => state);
@@ -98,14 +98,11 @@ const Cart = () => {
         </div>
     ) : (
         <h3>
-        <span role="img" aria-label="shocked">
-            😱
-        </span>
-        You haven't added anything to your cart yet!
+        Error, nothing is in your cart!
         </h3>
     )}
     </div>
   );
 };
 
-export default Cart;
+export default checkout;
