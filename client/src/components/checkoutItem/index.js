@@ -30,7 +30,7 @@ const CheckoutItem = ({ item }) => {
             purchaseQuantity: parseInt(value)
           });
         
-          idbPromise('cart', 'put', { ...item, purchaseQuantity: parseInt(value) });
+          idbPromise('checkout', 'put', { ...item, purchaseQuantity: parseInt(value) });
         }
       };
 
@@ -55,7 +55,7 @@ const CheckoutItem = ({ item }) => {
           <span
             role="img"
             aria-label="delete"
-            onClick={() => removeFromCart(item)}
+            onClick={() => removeFromCheckout(item)}
             >
             
          </span>

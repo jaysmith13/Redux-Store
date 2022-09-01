@@ -64,7 +64,7 @@ const checkout = () => {
   }, [data]);
 
   
-  if (!state.cartOpen) {
+  if (!state.checkoutOpen) {
     return (
       <div className="checkout-closed" onClick={toggleCart}>
         <span
