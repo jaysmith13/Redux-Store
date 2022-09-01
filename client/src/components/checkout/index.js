@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import CheckoutItem from '../checkoutItem';
+import checkoutItem from '../checkoutItem';
 import Auth from '../../utils/auth';
 import './style.css';
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
@@ -11,7 +11,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 const stripePromise = loadStripe('pk_test_51LXFykLV2oOJPgrv1Gzdsp4JUD7d54Q16U4Ba2whg8vIvBcC6apN8sQaU0udrKOi0ZGSXD4ybcaMzSFNbA82RXQA00BiUxeTev');
 
-const Cart = () => {
+const checkout = () => {
   const state = useSelector(state => state);
 
   const dispatch = useDispatch(); 
@@ -19,15 +19,15 @@ const Cart = () => {
   const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
   useEffect(() => {
-    async function getCart() {
-      const cart = await idbPromise('cart', 'get');
-      dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart] });
+    async function getCheckout() {
+      const checkout = await idbPromise('checkout', 'get');
+      dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...checkout] });
     };
   
     if (!state.cart.length) {
       getCart();
     }
-  }, [state.cart.length, dispatch]);
+  }, [state.checkout.length, dispatch]);
 
   function toggleCart() {
     dispatch({ type: TOGGLE_CART });
@@ -63,10 +63,10 @@ const Cart = () => {
     }
   }, [data]);
 
-  // if cart is not open 
+  
   if (!state.cartOpen) {
     return (
-      <div className="cart-closed" onClick={toggleCart}>
+      <div className="checkout-closed" onClick={toggleCart}>
         <span
           role="img"
           aria-label="trash">🛒</span>
@@ -76,7 +76,7 @@ const Cart = () => {
 
 
   return (
-  <div className="cart">
+  <div className="checkout">
     <div className="close" onClick={toggleCart}>[close]</div>
     <h2>Shopping Cart</h2>
     {state.cart.length ? (

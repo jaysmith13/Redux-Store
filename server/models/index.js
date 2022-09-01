@@ -1,15 +1,6 @@
-const mongoose = require('mongoose');
+const User = require('./User');
+const Product = require('./Product');
+const Category = require('./Category');
+const Order = require('./Order');
 
-const { Schema } = mongoose;
-
-const categorySchema = new Schema({
-  name: {
-    type: String,
-    required: true,
-    trim: true
-  }
-});
-
-const Category = mongoose.model('Category', categorySchema);
-
-module.exports = Category;
+module.exports = { User, Product, Category, Order };
