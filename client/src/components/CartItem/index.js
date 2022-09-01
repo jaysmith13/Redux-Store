@@ -3,15 +3,15 @@ import { REMOVE_FROM_CART, UPDATE_CART_QUANTITY } from '../../utils/actions';
 import { idbPromise } from "../../utils/helpers";
 import { useDispatch } from 'react-redux';
 
-const CheckoutItem = ({ item }) => {
+const CartItem = ({ item }) => {
     const dispatch = useDispatch(); 
 
-    const removeFromCheckout = item => {
+    const REMOVE_FROM_CART = item => {
       dispatch({
         type: REMOVE_FROM_CART,
         _id: item._id
       });
-      idbPromise('checkout', 'delete', { ...item });
+      idbPromise('cart', 'delete', { ...item });
     };
 
     const onChange = (e) => {
@@ -30,7 +30,7 @@ const CheckoutItem = ({ item }) => {
             purchaseQuantity: parseInt(value)
           });
         
-          idbPromise('checkout', 'put', { ...item, purchaseQuantity: parseInt(value) });
+          idbPromise('cart', 'put', { ...item, purchaseQuantity: parseInt(value) });
         }
       };
 
@@ -65,4 +65,4 @@ const CheckoutItem = ({ item }) => {
   );
 }
 
-export default checkoutItem;
+export default CartItem;

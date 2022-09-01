@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import checkoutItem from '../checkoutItem';
+import CartItem from '../CartItem';
 import Auth from '../../utils/auth';
 import './style.css';
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
@@ -11,7 +11,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 const stripePromise = loadStripe('pk_test_51LXFykLV2oOJPgrv1Gzdsp4JUD7d54Q16U4Ba2whg8vIvBcC6apN8sQaU0udrKOi0ZGSXD4ybcaMzSFNbA82RXQA00BiUxeTev');
 
-const checkout = () => {
+const cart = () => {
   const state = useSelector(state => state);
 
   const dispatch = useDispatch(); 
@@ -19,9 +19,9 @@ const checkout = () => {
   const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
   useEffect(() => {
-    async function getCheckout() {
+    async function getCart() {
       const checkout = await idbPromise('checkout', 'get');
-      dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...checkout] });
+      dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart] });
     };
   
     if (!state.cart.length) {
@@ -105,4 +105,4 @@ const checkout = () => {
   );
 };
 
-export default checkout;
+export default cart;
